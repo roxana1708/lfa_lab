@@ -22,15 +22,7 @@ def lambda_NFA(word, ind, st_crt):  # functia este recursiva pentru a verifica t
     if transitons[st_crt][alphabet.index(chr_crt)] == -1:  # daca din starea curenta nu putem sa trecem in alta stare cu litera curenta
         if transitons[st_crt][poz_lambda] != -1: # verificam daca avem posibilitatea unei lambda tranzitii
             st_crt = transitons[st_crt][poz_lambda][0]
-            if ind == len(word):    #in cazul in care lambda tranzitia este ultima tranzitie (dintre ultima litera si strea curenta),
-                # caz in care trebuie sa oprim recursivitate,
-                # altfel va continua sa apeleze pentru aceeasi litera si starea curenta (setata in urma tranzitiei lambda)
-                if st_crt in st_fin:   # verificam daca stare in care am ajuns prin lambda tranzitie e finala
-                    return 1
-                else:
-                    return 0
-            else:
-                rez = lambda_NFA(word, ind, st_crt)  # daca nu este tranzitie finala atunci verficam si aceasta cale
+            rez = lambda_NFA(word, ind, st_crt) 
         else:
             return 0
     else:
