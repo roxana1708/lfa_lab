@@ -486,7 +486,3 @@ automat3 = dfaToDfaMin(automat03)
 #Afisare automat final
 print("DFA -> DFA Min")
 print(automat3[7])
-"""
-    DFA TO DFA Min
-"""
-
