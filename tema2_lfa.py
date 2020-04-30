@@ -26,7 +26,7 @@ def citireDateLambdaNfaToNfa():
             if len(transitions[i][j]) == 0:
                 transitions[i][j] = -1
 
-    automat = [0] * 8
+    automat = [0] * 9
     automat[0] = n
     automat[1] = m
     automat[2] = alfabet
@@ -35,14 +35,15 @@ def citireDateLambdaNfaToNfa():
     automat[5] = st_fin
     automat[6] = l
     automat[7] = transitions
+    automat[8] = poz_lambda
 
     return automat
 
 def inchidereLambda(automatIn, tabel, stare, stare_curenta):
     if stare_curenta not in tabel[0][stare]:
         tabel[0][stare].append(stare_curenta)
-        if automatIn[7][stare_curenta][2] != -1:
-            for i in automatIn[7][stare_curenta][2]:
+        if automatIn[7][stare_curenta][automatIn[8]] != -1:
+            for i in automatIn[7][stare_curenta][automatIn[8]]:
                 inchidereLambda(automatIn, tabel, stare, i)
 
 def tranzitiiCaracter(automatIn, tabel, chr):
@@ -486,3 +487,6 @@ automat3 = dfaToDfaMin(automat03)
 #Afisare automat final
 print("DFA -> DFA Min")
 print(automat3[7])
+"""
+    DFA TO DFA Min
+"""
